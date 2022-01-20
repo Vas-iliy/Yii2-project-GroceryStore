@@ -32,9 +32,10 @@ class Order extends ActiveRecord
             [
                 'class' => TimestampBehavior::class,
                 'attributes' => [
-                    ActiveRecord::EVENT_AFTER_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_AFTER_UPDATE => ['updated_at'],
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
+                // если вместо метки времени UNIX используется datetime:
                 'value' => new Expression('NOW()'),
             ],
         ];

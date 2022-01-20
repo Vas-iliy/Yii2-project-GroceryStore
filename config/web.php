@@ -16,6 +16,17 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        // нет конфликта js
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,   // не опубликовывать комплект
+                    'js' => [
+                        '/project-GroceryStore/js/jquery-1.11.1.min.js',
+                    ]
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'IF-f9h2noWHqQfT1xzWbq3lDnB_hG9zG',
