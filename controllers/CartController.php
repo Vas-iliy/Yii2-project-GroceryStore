@@ -22,4 +22,11 @@ class CartController extends AppController
         }
         return $this->redirect(\Yii::$app->request->referrer);
     }
+
+    public function actionShow()
+    {
+        $session = \Yii::$app->session;
+        $session->open();
+        return $this->renderPartial('cart-modal', compact('session'));
+    }
 }
