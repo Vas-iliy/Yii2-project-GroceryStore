@@ -16,10 +16,8 @@ class CategoryController extends AppController
             throw new NotFoundHttpException('No Category');
         }
         $this->setMeta("{$category->title}::" . \Yii::$app->name, $category->keywords, $category->description);
-        //$products = Product::find()->where(['category_id' => $id])->all();
-        $query = Product::find()->where(['category_id' => $id]);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
-        $products = $query->offset($pages->offset)->limit($pages->limit)->all();
+        $pages = new Pagination(['totalCount' => $category->getProducts()->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $products = $category->getProducts()->offset($pages->offset)->limit($pages->limit)->all();
         return $this->render('view', compact('products', 'category', 'pages'));
     }
 }
