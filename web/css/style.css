@@ -1711,6 +1711,13 @@ h2.typoh2{
 		margin-bottom: 0em;
 	}
 }
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+	background-color: #FA1818;
+	border-color: #FA1818;
+}
+.pagination > li:last-child > a, .pagination > li:last-child > span:focus, .pagination > li > a, .pagination > li > span {
+	color: #FA1818;
+}
 @media (max-width:640px){
 	h1, .h1, h2, .h2, h3, .h3 {
 		margin-top: 0px;
