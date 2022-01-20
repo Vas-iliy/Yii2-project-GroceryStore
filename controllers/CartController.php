@@ -61,4 +61,19 @@ class CartController extends AppController
 
         return $this->render('checkout', compact('session'));
     }
+
+    public function actionChangeCart()
+    {
+        $id = $this->request->get('id');
+        $qty = $this->request->get('qty');
+        $product = Product::findOne($id);
+        if (empty($product)) {
+            return false;
+        }
+        $session = \Yii::$app->session;
+        $session->open();
+        $cart = new Cart();
+        $cart->addToCart($product, $qty);
+        return $this->renderPartial('cart-modal', compact('session'));
+    }
 }
