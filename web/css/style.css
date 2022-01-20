@@ -1718,6 +1718,13 @@ h2.typoh2{
 .pagination > li:last-child > a, .pagination > li:last-child > span:focus, .pagination > li > a, .pagination > li > span {
 	color: #FA1818;
 }
+img {
+	max-width: 100%;
+	height: auto;
+}
+.snipcart-thumb img {
+	max-height: 140px;
+}
 @media (max-width:640px){
 	h1, .h1, h2, .h2, h3, .h3 {
 		margin-top: 0px;
