@@ -17,15 +17,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
-            //'created_at',
-            [
+            'created_at',
+            /*[
                 'attribute' => 'created_at',
                 'format' =>'datetime'
-            ],
+            ],*/
             'updated_at',
             'qty',
             'total',
-            'status',
+            //'status',
+            [
+                'attribute' => 'status',
+                'value' => function($data) {
+                    return $data->status ? '<span class="text-green">Готов</span>' : '<span class="text-red">Новый</span>';
+                },
+                'format' => 'raw',
+            ],
             //'name',
             //'email:email',
             //'phone',

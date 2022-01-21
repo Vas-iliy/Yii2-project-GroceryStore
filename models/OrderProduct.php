@@ -11,6 +11,11 @@ class OrderProduct extends ActiveRecord
         return 'order_product';
     }
 
+    public function getOrder()
+    {
+        return $this->hasOne(Order::class, ['id' => 'order_id']);
+    }
+
     public function rules()
     {
         return [
