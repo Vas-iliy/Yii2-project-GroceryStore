@@ -23,6 +23,10 @@ $config = [
         ],
     ],
     'components' => [
+        //свой формат для чего либо
+        'formatter' => [
+            'datetimeFormat' => 'php:d F Y H:i:s',
+        ],
         // нет конфликта js
         'assetManager' => [
             'bundles' => [
