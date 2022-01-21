@@ -14,16 +14,11 @@ use yii\widgets\ActiveForm;
         'enableClientValidation' => false,
 
     ]); ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
     <?= $form->field($model, 'qty')->textInput() ?>
 
     <?= $form->field($model, 'total')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(['Новый', 'Готов']) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

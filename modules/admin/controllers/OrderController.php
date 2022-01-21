@@ -75,7 +75,7 @@ class OrderController extends AppAdminController
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    /*public function actionCreate()
     {
         $model = new Order();
 
@@ -90,7 +90,7 @@ class OrderController extends AppAdminController
         return $this->render('create', [
             'model' => $model,
         ]);
-    }
+    }*/
 
     /**
      * Updates an existing Order model.
@@ -104,6 +104,7 @@ class OrderController extends AppAdminController
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'Заказ обновлен');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -121,6 +122,7 @@ class OrderController extends AppAdminController
      */
     public function actionDelete($id)
     {
+        $this->findModel($id)->unlinkAll('orderProducts', true);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
