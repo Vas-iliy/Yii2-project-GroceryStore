@@ -33,10 +33,25 @@ use yii\helpers\Url;
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="active"><a href="<?=Url::to(['main/index'])?>">
+                <li class="active">
+                    <a href="<?=Url::to()?>">
                         <i class="fa fa-link"></i>
                         <span>Статистика магазина</span>
                     </a>
+                </li><li class="active">
+                    <a href="<?=Url::to(['order/index'])?>">
+                        <i class="fa fa-link"></i>
+                        <span>Заказы</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-is-opening menu-open">
+                    <i class="fa fa-link"></i>
+                    <span>Категории</span>
+                    <i class="right fas fa-angle-left"></i>
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li><a href="<?=Url::to(['category/index'])?>">Список категорий</a></li>
+                        <li><a href="<?=Url::to(['category/create'])?>">Добавить категорию</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="<?=Url::to(['auth/logout'])?>" class="nav-link">
