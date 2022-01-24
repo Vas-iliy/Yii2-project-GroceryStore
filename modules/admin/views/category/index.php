@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            'title',
             //'parent_id',
             [
                 'attribute' => 'parent_id',
@@ -29,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->category->title ?? '-';
                 },
             ],
-            'title',
             //'description',
             //'keywords',
             [

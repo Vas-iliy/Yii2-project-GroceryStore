@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Product;
 use app\modules\admin\models\Category;
 use yii\data\ActiveDataProvider;
 use app\modules\admin\controllers\AppAdminController;
@@ -121,7 +122,13 @@ class CategoryController extends AppAdminController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $cats = Category::find()->where(['parent_id' => $id])->count();
+        $products = Product::find()->where(['category_id' => $id])->count();
+        if ($cats || $products) {
+            \Yii::$app->session->setFlash('error', 'Удаление невозможно, к категории прикреплено что-то');
+        } else {
+            $this->findModel($id)->delete();
+        }
 
         return $this->redirect(['index']);
     }
