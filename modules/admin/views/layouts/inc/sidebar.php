@@ -53,6 +53,15 @@ use yii\helpers\Url;
                         <li><a href="<?=Url::to(['category/create'])?>">Добавить категорию</a></li>
                     </ul>
                 </li>
+                <li class="nav-item menu-is-opening menu-open">
+                    <i class="fa fa-link"></i>
+                    <span>Товары</span>
+                    <i class="right fas fa-angle-left"></i>
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li><a href="<?=Url::to(['product/index'])?>">Список товаров</a></li>
+                        <li><a href="<?=Url::to(['product/create'])?>">Добавить товар</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="<?=Url::to(['auth/logout'])?>" class="nav-link">
                         <p>
