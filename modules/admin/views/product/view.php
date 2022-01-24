@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -30,15 +28,32 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category_id',
             'title',
+            //'category_id',
+            [
+                'attribute' => 'category_id',
+                'value' => isset($model->category->title) ?
+                    '<a href="' . \yii\helpers\Url::to(['category/view', 'id' => $model->category->id])
+                    .'">' . $model->category->title . '</a>' : '-',
+                'format' => 'raw',
+            ],
             'content:ntext',
             'price',
             'old_price',
             'description',
             'keywords',
-            'img',
-            'is_offer',
+            //'img',
+            [
+                    'attribute' => 'img',
+                'value' => "@web/products/{$model->img}",
+                'format' => ['image', ['width' => 100]],
+            ],
+            //'is_offer',
+            [
+                'attribute' => 'is_offer',
+                'value' => $model->is_offer ? '<span class="text-green">Да</span>' : '<span class="text-red">Нет</span>',
+                'format' => 'raw',
+            ],
         ],
     ]) ?>
 

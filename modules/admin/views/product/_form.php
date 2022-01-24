@@ -12,9 +12,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
-
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
+    <div class="form-group field-products-category_id">
+        <label class="control-label" for="field-products-category_id">Родительская категория</label>
+        <select id="field-products-category_id" class="form-control" name="Product[category_id]">
+            <?=\app\components\MenuWidget::widget([
+                'tpl' => 'select_product',
+                'model' => $model,
+                'cache_time' => 0,
+            ])?>
+        </select>
+
+        <div class="help-block"></div>
+    </div>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
@@ -28,7 +39,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'is_offer')->textInput() ?>
+    <?= $form->field($model, 'is_offer')->dropDownList(['Нет','Да']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
