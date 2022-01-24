@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     .'">' . $model->category->title . '</a>' : '-',
                 'format' => 'raw',
             ],
-            'content:ntext',
+            'content:raw',
             'price',
             'old_price',
             'description',
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'img',
             [
                     'attribute' => 'img',
-                'value' => "@web/products/{$model->img}",
+                'value' => $model->img ? "@web/products/{$model->img}" : "@web/products/no-image.png",
                 'format' => ['image', ['width' => 100]],
             ],
             //'is_offer',

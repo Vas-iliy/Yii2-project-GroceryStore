@@ -86,8 +86,11 @@
                                 <div class="snipcart-item block" >
                                     <div class="snipcart-thumb">
                                         <a href="<?=\yii\helpers\Url::to(['product/view', 'id' => $offer->id])?>">
-                                            <?=\yii\helpers\Html::img("@web/products/{$offer->img}", ['alt' => $offer->title])?>
-
+                                           <?if($offer->img):?>
+                                                <?= \yii\helpers\Html::img("@web/products/{$offer->img}", ['alt' => $offer->title]) ?>
+                                            <?else:?>
+                                                <?= \yii\helpers\Html::img("@web/products/no-image.png", ['alt' => $offer->title]) ?>
+                                            <?endif;?>
                                         </a>
                                         <p><?=$offer->title?></p>
                                         <h4>
