@@ -25,12 +25,8 @@
         <div class="agileinfo_single">
             <h5><?= $product->title ?></h5>
             <div class="col-md-4 agileinfo_single_left">
-                <?if($product->img):?>
-                    <?= \yii\helpers\Html::img("@web/products/{$product->img}", ['alt' => $product->title, 'id' => 'example']) ?>
-                <?else:?>
-                    <?= \yii\helpers\Html::img("@web/products/no-image.png", ['alt' => $product->title, 'id' => 'example']) ?>
-                <?endif;?>
-                </div>
+                <?= \yii\helpers\Html::img("@web/{$product->img}", ['alt' => $product->title, 'id' => 'example']) ?>
+            </div>
             <div class="col-md-8 agileinfo_single_right">
                 <div class="rating1">
 						<span class="starRating">
